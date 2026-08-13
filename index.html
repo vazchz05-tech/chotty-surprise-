@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Chotty ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #ffb6c9, #ff5c8a 45%, #8e174f);
+  color: white;
+}
+
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  animation: floatUp linear forwards;
+  opacity: .8;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.card {
+  position: relative;
+  z-index: 5;
+  width: min(92%, 600px);
+  min-height: 620px;
+  margin: 50px auto;
+  padding: 40px 25px;
+  text-align: center;
+  border-radius: 30px;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 25px 80px rgba(70,0,30,.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: .85;
+}
+
+h1 {
+  font-size: clamp(38px, 10vw, 70px);
+  margin: 10px 0;
+  font-family: Georgia, serif;
+}
+
+h2 {
+  font-size: clamp(22px, 6vw, 34px);
+  margin: 10px 0 25px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 8px auto;
+  max-width: 500px;
+}
+
+.love {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 21px;
+  margin-top: 20px;
+}
+
+.buttons {
+  position: relative;
+  height: 180px;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 999px;
+  padding: 16px 32px;
+  transition: all .3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+#yes {
+  background: linear-gradient(135deg, #ff1744, #ff4f81);
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-110%);
+  z-index: 10;
+}
+
+#no {
+  background: white;
+  color: #e91e63;
+  position: absolute;
+  left: 50%;
+  top: 90px;
+  transform: translateX(10%);
+}
+
+#message {
+  min-height: 35px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+#success {
+  animation: appear .8s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.bigHeart {
+  font-size: 90px;
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+.signature {
+  margin-top: 25px;
+  font-family: Georgia, serif;
+  font-size: 24px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 18px;
+  z-index: 100;
+  animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+  from {
+    transform: translateY(-20px) rotate(0);
+  }
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+.small {
+  font-size: 14px;
+  opacity: .75;
+  margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+
+  <div id="proposal">
+
+    <div class="badge">A little surprise from Sachii ❤️</div>
+
+    <h1>Chotty</h1>
+
+    <h2>My Pema Choden 🌹</h2>
+
+    <p>
+      I know you're a little sad right now...
+      so Sachii has a very serious mission:
+      <strong>make my Chotty smile. 🥺❤️</strong>
+    </p>
+
+    <p>
+      You are one of those people who can make an ordinary day
+      feel special just by being there.
+    </p>
+
+    <p class="love">
+      So I have one very important question...
+    </p>
+
+    <h2>Will you be mine? 💍❤️</h2>
+
+    <div id="message">Choose carefully, Chotty 😏</div>
+
+    <div class="buttons" id="buttons">
+      <button id="yes">YES ❤️</button>
+      <button id="no">NO 🙈</button>
+    </div>
+
+    <div class="small">
+      P.S. The NO button may have commitment issues. 😂
+    </div>
+
+  </div>
+
+
+  <div id="success" class="hidden">
+
+    <div class="bigHeart">❤️</div>
+
+    <h1>YAAAAAY!!! 🥹❤️</h1>
+
+    <h2>My Chotty said YES!</h2>
+
+    <p>
+      Pema Choden, you just made Sachii
+      the happiest person alive. 🥰
+    </p>
+
+    <p>
+      Whatever happens tomorrow, next week, or years from now,
+      I want you to remember one thing:
+    </p>
+
+    <p class="love">
+      You are precious to me.
+      Your smile matters to me.
+      And when you're sad, I want to be the reason
+      you smile again. ❤️
+    </p>
+
+    <p>
+      So come here, Chotty...
+      Sachii owes you the biggest hug. 🤗❤️
+    </p>
+
+    <div class="signature">
+      Forever your Sachii ❤️<br>
+      <span style="font-size:16px;">Tsering Topten</span>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const message = document.getElementById("message");
+const buttons = document.getElementById("buttons");
+
+let yesScale = 1;
+let noCount = 0;
+
+const messages = [
+  "Are you sure, Chotty? 🥺",
+  "Wait... you actually clicked NO?! 😭",
+  "Chottyyyyy, think again 😂❤️",
+  "That button is getting suspicious... 👀",
+  "Nice try! 😏",
+  "Sachii refuses to accept this answer. 😂",
+  "The universe says YES. 🌎❤️",
+  "Okay okay... one last chance? 🥹",
+  "You can't escape the love! ❤️😂"
+];
+
+no.addEventListener("click", () => {
+
+  noCount++;
+
+  message.textContent =
+    messages[Math.min(noCount - 1, messages.length - 1)];
+
+  // Make YES bigger
+  yesScale += 0.35;
+  yes.style.transform =
+    `translateX(-110%) scale(${yesScale})`;
+
+  // Make NO smaller
+  const noScale = Math.max(.45, 1 - noCount * .08);
+  no.style.transform =
+    `translateX(10%) scale(${noScale})`;
+
+  // Run away
+  const maxX = Math.max(20, buttons.clientWidth - 130);
+  const maxY = Math.max(30, buttons.clientHeight - 60);
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+
+  // After several attempts, make NO ridiculously difficult
+  if (noCount >= 5) {
+    no.textContent = "NOPE 😂";
+  }
+
+  if (noCount >= 8) {
+    no.style.display = "none";
+    message.textContent =
+      "Okay Chotty... the NO button has officially resigned. 😂❤️";
+  }
+
+});
+
+yes.addEventListener("click", () => {
+
+  document.getElementById("proposal").classList.add("hidden");
+  document.getElementById("success").classList.remove("hidden");
+
+  launchConfetti();
+
+  // Extra hearts
+  for(let i = 0; i < 30; i++) {
+    setTimeout(createHeart, i * 80);
+  }
+});
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  const emojis = ["❤️","💕","💗","💖","💘","🥰","✨"];
+
+  heart.textContent =
+    emojis[Math.floor(Math.random() * emojis.length)];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.fontSize =
+    (15 + Math.random() * 30) + "px";
+
+  heart.style.animationDuration =
+    (4 + Math.random() * 5) + "s";
+
+  document.getElementById("hearts").appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 500);
+
+function launchConfetti() {
+
+  const colors = [
+    "#ff1744",
+    "#ffeb3b",
+    "#00e676",
+    "#2196f3",
+    "#e040fb",
+    "#ffffff"
+  ];
+
+  for(let i = 0; i < 180; i++) {
+
+    setTimeout(() => {
+
+      const piece = document.createElement("div");
+
+      piece.className = "confetti";
+
+      piece.style.left =
+        Math.random() * 100 + "vw";
+
+      piece.style.top =
+        "-30px";
+
+      piece.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+      piece.style.transform =
+        `rotate(${Math.random() * 360}deg)`;
+
+      piece.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
+
+      document.body.appendChild(piece);
+
+      setTimeout(() => piece.remove(), 5000);
+
+    }, i * 15);
+  }
+}
+
+</script>
+
+</body>
+</html>
