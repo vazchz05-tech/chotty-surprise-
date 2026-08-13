@@ -2,427 +2,569 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>For My Chotty ❤️</title>
 
 <style>
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  overflow: hidden;
-  font-family: "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #ffb6c9, #ff5c8a 45%, #8e174f);
-  color: white;
+    background:
+        radial-gradient(circle at 20% 20%, #ffb6d0 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ff6b9a 0%, transparent 35%),
+        linear-gradient(135deg, #4b0b2b, #a71955, #ff477e);
+    color: white;
 }
 
-.hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.heart {
-  position: absolute;
-  bottom: -50px;
-  animation: floatUp linear forwards;
-  opacity: .8;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  20% { opacity: 1; }
-  to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
+.screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
 }
 
 .card {
-  position: relative;
-  z-index: 5;
-  width: min(92%, 600px);
-  min-height: 620px;
-  margin: 50px auto;
-  padding: 40px 25px;
-  text-align: center;
-  border-radius: 30px;
-  background: rgba(255,255,255,.15);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,.3);
-  box-shadow: 0 25px 80px rgba(70,0,30,.35);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    width: 100%;
+    max-width: 480px;
+    max-height: 94vh;
+    overflow-y: auto;
+    padding: 30px 22px;
+    text-align: center;
+    border-radius: 30px;
+    background: rgba(255,255,255,.13);
+    border: 1px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 70px rgba(0,0,0,.35);
 }
 
-.badge {
-  font-size: 14px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  opacity: .85;
+.heart {
+    font-size: 65px;
+    animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+    50% {
+        transform: scale(1.18);
+    }
 }
 
 h1 {
-  font-size: clamp(38px, 10vw, 70px);
-  margin: 10px 0;
-  font-family: Georgia, serif;
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 12vw, 65px);
+    margin: 8px 0;
 }
 
 h2 {
-  font-size: clamp(22px, 6vw, 34px);
-  margin: 10px 0 25px;
+    font-family: Georgia, serif;
+    font-size: 27px;
+    margin: 12px 0 20px;
 }
 
 p {
-  font-size: 18px;
-  line-height: 1.7;
-  margin: 8px auto;
-  max-width: 500px;
+    font-size: 17px;
+    line-height: 1.65;
 }
 
-.love {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 21px;
-  margin-top: 20px;
+.highlight {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
 }
 
-.buttons {
-  position: relative;
-  height: 180px;
-  margin-top: 20px;
+.question {
+    margin-top: 25px;
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+.area {
+    position: relative;
+    height: 190px;
+    margin-top: 10px;
+    overflow: hidden;
 }
 
 button {
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 999px;
-  padding: 16px 32px;
-  transition: all .3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    border: 0;
+    border-radius: 50px;
+    padding: 16px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+    transition: transform .25s ease, left .2s ease, top .2s ease;
 }
 
 #yes {
-  background: linear-gradient(135deg, #ff1744, #ff4f81);
-  color: white;
-  position: absolute;
-  left: 50%;
-  top: 20px;
-  transform: translateX(-110%);
-  z-index: 10;
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-110%);
+    background: linear-gradient(135deg,#ff1744,#ff5e91);
+    color: white;
+    z-index: 10;
 }
 
 #no {
-  background: white;
-  color: #e91e63;
-  position: absolute;
-  left: 50%;
-  top: 90px;
-  transform: translateX(10%);
+    position: absolute;
+    left: 55%;
+    top: 105px;
+    background: white;
+    color: #e91e63;
+    z-index: 20;
 }
 
-#message {
-  min-height: 35px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.hidden {
-  display: none;
-}
-
-#success {
-  animation: appear .8s ease;
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: scale(.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.bigHeart {
-  font-size: 90px;
-  animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
-}
-
-.signature {
-  margin-top: 25px;
-  font-family: Georgia, serif;
-  font-size: 24px;
-}
-
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 18px;
-  z-index: 100;
-  animation: confettiFall 3s linear forwards;
-}
-
-@keyframes confettiFall {
-  from {
-    transform: translateY(-20px) rotate(0);
-  }
-  to {
-    transform: translateY(110vh) rotate(720deg);
-  }
+#reaction {
+    min-height: 30px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .small {
-  font-size: 14px;
-  opacity: .75;
-  margin-top: 25px;
+    font-size: 13px;
+    opacity: .7;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Floating hearts */
+
+.floating-heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Success */
+
+#success {
+    animation: appear .8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.big {
+    font-size: 85px;
+    animation: beat 1s infinite;
+}
+
+.signature {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    margin-top: 25px;
+}
+
+.confetti {
+    position: fixed;
+    width: 9px;
+    height: 17px;
+    top: -30px;
+    z-index: 100;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="hearts" id="hearts"></div>
+<div id="hearts"></div>
+
+<div class="screen">
 
 <div class="card">
 
-  <div id="proposal">
+<!-- PROPOSAL -->
 
-    <div class="badge">A little surprise from Sachii ❤️</div>
+<div id="proposal">
 
-    <h1>Chotty</h1>
+<div class="heart">❤️</div>
 
-    <h2>My Pema Choden 🌹</h2>
+<div class="small">
+A tiny surprise from Sachii
+</div>
 
-    <p>
-      I know you're a little sad right now...
-      so Sachii has a very serious mission:
-      <strong>make my Chotty smile. 🥺❤️</strong>
-    </p>
+<h1>Chotty</h1>
 
-    <p>
-      You are one of those people who can make an ordinary day
-      feel special just by being there.
-    </p>
+<h2>My Pema Choden 🌹</h2>
 
-    <p class="love">
-      So I have one very important question...
-    </p>
+<p>
+I heard my favorite girl has been a little sad lately...
+</p>
 
-    <h2>Will you be mine? 💍❤️</h2>
+<p>
+So Sachii came with an important mission:
+<strong>steal one beautiful smile from you. 🥺</strong>
+</p>
 
-    <div id="message">Choose carefully, Chotty 😏</div>
+<p class="highlight">
+Because your smile is honestly one of my favorite things in this world.
+</p>
 
-    <div class="buttons" id="buttons">
-      <button id="yes">YES ❤️</button>
-      <button id="no">NO 🙈</button>
-    </div>
+<p>
+And now that you're here...
+I have something I've been wanting to ask you.
+</p>
 
-    <div class="small">
-      P.S. The NO button may have commitment issues. 😂
-    </div>
+<div class="question">
+Will you be mine? 💍❤️
+</div>
 
-  </div>
+<div id="reaction">
+Choose carefully, Chotty 😏
+</div>
 
+<div class="area" id="area">
 
-  <div id="success" class="hidden">
+<button id="yes">
+YES ❤️
+</button>
 
-    <div class="bigHeart">❤️</div>
-
-    <h1>YAAAAAY!!! 🥹❤️</h1>
-
-    <h2>My Chotty said YES!</h2>
-
-    <p>
-      Pema Choden, you just made Sachii
-      the happiest person alive. 🥰
-    </p>
-
-    <p>
-      Whatever happens tomorrow, next week, or years from now,
-      I want you to remember one thing:
-    </p>
-
-    <p class="love">
-      You are precious to me.
-      Your smile matters to me.
-      And when you're sad, I want to be the reason
-      you smile again. ❤️
-    </p>
-
-    <p>
-      So come here, Chotty...
-      Sachii owes you the biggest hug. 🤗❤️
-    </p>
-
-    <div class="signature">
-      Forever your Sachii ❤️<br>
-      <span style="font-size:16px;">Tsering Topten</span>
-    </div>
-
-  </div>
+<button id="no">
+NO 🙈
+</button>
 
 </div>
+
+<p class="small">
+P.S. The NO button is slightly nervous. 😂
+</p>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div id="success" class="hidden">
+
+<div class="big">💖</div>
+
+<h1>YESSSS! 🥹</h1>
+
+<h2>My Chotty said YES!</h2>
+
+<p>
+Pema Choden...
+you have no idea how big that smile
+you just put on Sachii's face is.
+</p>
+
+<p>
+I don't promise that every day will be perfect.
+But I promise that when you're happy,
+I'll happily smile with you...
+and when you're sad,
+I'll do my best to bring that smile back.
+</p>
+
+<p class="highlight">
+Your happiness matters to me more than you know. ❤️
+</p>
+
+<p>
+Thank you for choosing Sachii.
+</p>
+
+<div class="signature">
+Forever your Sachii ❤️
+<br>
+<span style="font-size:15px;">
+Tsering Topten (Ashim)
+</span>
+</div>
+
+<br>
+
+<p>
+Now stop being sad, Chotty. 😌
+<br>
+You officially owe Sachii a smile. 🥰
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 
 <script>
 
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
-const message = document.getElementById("message");
-const buttons = document.getElementById("buttons");
+const area = document.getElementById("area");
+const reaction = document.getElementById("reaction");
 
-let yesScale = 1;
-let noCount = 0;
+let attempts = 0;
+let yesSize = 1;
 
-const messages = [
-  "Are you sure, Chotty? 🥺",
-  "Wait... you actually clicked NO?! 😭",
-  "Chottyyyyy, think again 😂❤️",
-  "That button is getting suspicious... 👀",
-  "Nice try! 😏",
-  "Sachii refuses to accept this answer. 😂",
-  "The universe says YES. 🌎❤️",
-  "Okay okay... one last chance? 🥹",
-  "You can't escape the love! ❤️😂"
+const reactions = [
+    "Are you sure, Chotty? 🥺",
+    "Oiiiii! Think again 😂❤️",
+    "That wasn't the answer I was hoping for 😭",
+    "Chotty, don't make Sachii sad too! 😂",
+    "Nice try 😏",
+    "The NO button is running away! 😂",
+    "Okay... one last chance, beautiful. 🥹",
+    "Sachii still believes in YES ❤️"
 ];
 
-no.addEventListener("click", () => {
+function moveNoButton() {
 
-  noCount++;
+    attempts++;
 
-  message.textContent =
-    messages[Math.min(noCount - 1, messages.length - 1)];
+    reaction.textContent =
+        reactions[Math.min(attempts - 1, reactions.length - 1)];
 
-  // Make YES bigger
-  yesScale += 0.35;
-  yes.style.transform =
-    `translateX(-110%) scale(${yesScale})`;
+    /*
+       Make YES bigger
+    */
 
-  // Make NO smaller
-  const noScale = Math.max(.45, 1 - noCount * .08);
-  no.style.transform =
-    `translateX(10%) scale(${noScale})`;
+    yesSize += 0.18;
 
-  // Run away
-  const maxX = Math.max(20, buttons.clientWidth - 130);
-  const maxY = Math.max(30, buttons.clientHeight - 60);
+    yes.style.transform =
+        `translateX(-110%) scale(${yesSize})`;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+    /*
+       Find safe random position
+       inside the button area
+    */
 
-  no.style.left = x + "px";
-  no.style.top = y + "px";
+    const areaWidth = area.clientWidth;
+    const areaHeight = area.clientHeight;
 
-  // After several attempts, make NO ridiculously difficult
-  if (noCount >= 5) {
-    no.textContent = "NOPE 😂";
-  }
+    const buttonWidth = no.offsetWidth;
+    const buttonHeight = no.offsetHeight;
 
-  if (noCount >= 8) {
-    no.style.display = "none";
-    message.textContent =
-      "Okay Chotty... the NO button has officially resigned. 😂❤️";
-  }
+    const maxX = areaWidth - buttonWidth - 5;
+    const maxY = areaHeight - buttonHeight - 5;
+
+    const x = Math.max(
+        5,
+        Math.random() * maxX
+    );
+
+    const y = Math.max(
+        5,
+        Math.random() * maxY
+    );
+
+    no.style.left = x + "px";
+    no.style.top = y + "px";
+
+    /*
+       Change NO text
+    */
+
+    if (attempts === 2)
+        no.textContent = "Really? 😭";
+
+    if (attempts === 3)
+        no.textContent = "Think again 😂";
+
+    if (attempts === 4)
+        no.textContent = "Nope 😏";
+
+    if (attempts >= 5) {
+
+        no.textContent = "Catch me! 😂";
+
+        /*
+           Eventually hide NO
+           and let YES take over
+        */
+
+        if (attempts >= 8) {
+
+            no.style.opacity = "0";
+
+            reaction.textContent =
+                "Okay Chotty... the NO button has officially given up. 😂❤️";
+
+            setTimeout(() => {
+                no.style.display = "none";
+            }, 400);
+        }
+    }
+}
+
+
+/*
+   Mobile:
+   pressing NO makes it escape.
+*/
+
+no.addEventListener("click", moveNoButton);
+
+
+/*
+   Desktop:
+   NO escapes when mouse gets close.
+*/
+
+no.addEventListener("mouseenter", () => {
+
+    if (window.innerWidth > 600) {
+        moveNoButton();
+    }
 
 });
 
-yes.addEventListener("click", () => {
 
-  document.getElementById("proposal").classList.add("hidden");
-  document.getElementById("success").classList.remove("hidden");
+/*
+   YES
+*/
 
-  launchConfetti();
+yes.addEventListener("click", function() {
 
-  // Extra hearts
-  for(let i = 0; i < 30; i++) {
-    setTimeout(createHeart, i * 80);
-  }
+    document.getElementById("proposal")
+        .classList.add("hidden");
+
+    document.getElementById("success")
+        .classList.remove("hidden");
+
+    celebration();
+
 });
+
+
+/*
+   Floating hearts
+*/
 
 function createHeart() {
 
-  const heart = document.createElement("div");
+    const h = document.createElement("div");
 
-  heart.className = "heart";
+    h.className = "floating-heart";
 
-  const emojis = ["❤️","💕","💗","💖","💘","🥰","✨"];
+    const hearts = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "✨",
+        "🥰"
+    ];
 
-  heart.textContent =
-    emojis[Math.floor(Math.random() * emojis.length)];
+    h.textContent =
+        hearts[Math.floor(Math.random() * hearts.length)];
 
-  heart.style.left =
-    Math.random() * 100 + "vw";
-
-  heart.style.fontSize =
-    (15 + Math.random() * 30) + "px";
-
-  heart.style.animationDuration =
-    (4 + Math.random() * 5) + "s";
-
-  document.getElementById("hearts").appendChild(heart);
-
-  setTimeout(() => heart.remove(), 10000);
-}
-
-setInterval(createHeart, 500);
-
-function launchConfetti() {
-
-  const colors = [
-    "#ff1744",
-    "#ffeb3b",
-    "#00e676",
-    "#2196f3",
-    "#e040fb",
-    "#ffffff"
-  ];
-
-  for(let i = 0; i < 180; i++) {
-
-    setTimeout(() => {
-
-      const piece = document.createElement("div");
-
-      piece.className = "confetti";
-
-      piece.style.left =
+    h.style.left =
         Math.random() * 100 + "vw";
 
-      piece.style.top =
-        "-30px";
+    h.style.fontSize =
+        (15 + Math.random() * 25) + "px";
 
-      piece.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
+    h.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
 
-      piece.style.transform =
-        `rotate(${Math.random() * 360}deg)`;
+    document.body.appendChild(h);
 
-      piece.style.animationDuration =
-        (2 + Math.random() * 3) + "s";
+    setTimeout(() => h.remove(), 10000);
+}
 
-      document.body.appendChild(piece);
+setInterval(createHeart, 550);
 
-      setTimeout(() => piece.remove(), 5000);
 
-    }, i * 15);
-  }
+/*
+   Celebration
+*/
+
+function celebration() {
+
+    const colors = [
+        "#ff1744",
+        "#ffeb3b",
+        "#00e676",
+        "#29b6f6",
+        "#e040fb",
+        "#ffffff"
+    ];
+
+    for (let i = 0; i < 180; i++) {
+
+        setTimeout(() => {
+
+            const c = document.createElement("div");
+
+            c.className = "confetti";
+
+            c.style.left =
+                Math.random() * 100 + "vw";
+
+            c.style.background =
+                colors[
+                    Math.floor(
+                        Math.random() * colors.length
+                    )
+                ];
+
+            c.style.animationDuration =
+                (2 + Math.random() * 3) + "s";
+
+            document.body.appendChild(c);
+
+            setTimeout(() => c.remove(), 5000);
+
+        }, i * 12);
+    }
+
+    for (let i = 0; i < 35; i++) {
+
+        setTimeout(createHeart, i * 80);
+
+    }
 }
 
 </script>
