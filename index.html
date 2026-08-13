@@ -97,7 +97,23 @@ p {
     margin-top: 10px;
     overflow: hidden;
 }
+.music-box {
+    margin: 15px 0 22px;
+}
 
+#musicButton {
+    background: rgba(255,255,255,.18);
+    color: white;
+    border: 1px solid rgba(255,255,255,.35);
+    font-size: 15px;
+    padding: 12px 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.15);
+}
+
+#musicButton:active {
+    transform: scale(.95);
+}
+    
 button {
     border: 0;
     border-radius: 50px;
@@ -226,6 +242,12 @@ button {
 <!-- PROPOSAL -->
 
 <div id="proposal">
+    <div class="music-box">
+    <button id="musicButton">🎵 Play a little song from Sachii</button>
+    <audio id="loveMusic" loop>
+        <source src="paulyudin-love-piano-159254.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
 <div class="heart">❤️</div>
 
@@ -338,7 +360,28 @@ You officially owe Sachii a smile. 🥰
 
 
 <script>
+const musicButton = document.getElementById("musicButton");
+const loveMusic = document.getElementById("loveMusic");
 
+musicButton.addEventListener("click", () => {
+
+    if (loveMusic.paused) {
+
+        loveMusic.play();
+
+        musicButton.textContent =
+            "🎵 Playing for my Chotty ❤️";
+
+    } else {
+
+        loveMusic.pause();
+
+        musicButton.textContent =
+            "🎵 Play the song again";
+    }
+
+});
+    
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 const area = document.getElementById("area");
